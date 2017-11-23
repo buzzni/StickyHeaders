@@ -22,22 +22,22 @@ group = PROJECT_GROUP_ID
 version = PROJECT_VERSION
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion 25
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
+        minSdkVersion 15
     }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile "com.android.support:appcompat-v7:$supportLibraryVersion"
-    compile "com.android.support:recyclerview-v7:$supportLibraryVersion"
-    compile "com.android.support:design:$supportLibraryVersion"
+    compile "com.android.support:appcompat-v7:25.3.1"
+    compile "com.android.support:recyclerview-v7:25.3.1"
+    compile "com.android.support:design:25.3.1"
 
     testCompile 'junit:junit:4.12'
-    testCompile "org.mockito:mockito-core:$mockitoVersion"
+    testCompile "org.mockito:mockito-core:1.10.19"
     testCompile 'org.robolectric:robolectric:3.1'
 }
 
