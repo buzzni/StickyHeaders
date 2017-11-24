@@ -23,6 +23,7 @@ public class StickyLayoutManager extends LinearLayoutManager {
     private List<Integer> headerPositions = new ArrayList<>();
     private RecyclerViewRetriever viewRetriever;
     private int headerElevation = StickyHeaderPositioner.NO_ELEVATION;
+    private boolean enabled = true;
     @Nullable private StickyHeaderListener listener;
 
     public StickyLayoutManager(Context context, StickyHeaderHandler headerHandler) {
@@ -162,12 +163,28 @@ public class StickyLayoutManager extends LinearLayoutManager {
         }
 
         for (int i = 0; i < adapterData.size(); i++) {
-            if (adapterData.get(i) instanceof StickyHeader) {
+            if (adapterData.get(i) instanceof StickyHeader && enabled) {
                 headerPositions.add(i);
             }
         }
         if (positioner != null) {
             positioner.setHeaderPositions(headerPositions);
         }
+    }
+    
+    /**
+     * Show Sticky headers.
+     */
+    public void showHeaders() {
+        enabled = true;
+        cacheHeaderPositions();
+    }
+    
+    /**
+     * Hide Sticky headers.
+     */
+    public void hideHeaders() {
+        enabled = false;
+        cacheHeaderPositions();
     }
 }
